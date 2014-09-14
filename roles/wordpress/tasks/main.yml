@@ -1,37 +1,33 @@
 ---
 
-# - name: update apt-cache
-#   sudo: yes
-#   apt: update_cache=yes
-#
-# - name: install php
-#   sudo: yes
-#   apt: name={{item}} state=present
-#   with_items:
-#     - php5-common
-#     - php5-cli
-#
-# - name: download wp-cli
-#   sudo: yes
-#   get_url: url=https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar dest=/usr/local/bin/wp
-
-- name: update permissions of wp-cli to allow anyone to execute it (only for local!)
+- name: install php
   sudo: yes
+  apt: name={{item}} state=present
+  with_items:
+    - curl
+    - libcurl3
+    - libcurl3-dev
+    - php5-curl
+    - php5-common
+    - php5-cli
+
+- name: download wp-cli
+  sudo: yes
+  get_url: url=https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar dest=/usr/local/bin/wp
+
+- name: update permissions of wp-cli to allow anyone to execute it (should be only for local install!)
   file: path=/usr/local/bin/wp mode="0755"
 
 - name: Add group "wordpress"
-  sudo: yes
   group: name=wordpress
 
 - name: Add user "wordpress", belonging to group "wordpress" and having a home dir of /srv/wordpress
-  sudo: yes
   user: name=wordpress group=wordpress home=/srv/wordpress/
 
 - name: Give ownership of /srv/wordpress to the wordpress user
-  sudo: yes
   file: name=/srv/wordpress group=wordpress owner=wordpress
 
-- name: Download wordpress into /srv/wordpress using wp-cli as the wordpress user
+- name: Download wordpress into /srv/wordpress using wp[-cli] command as the wordpress user
   sudo: yes
   sudo_user: wordpress
   command: wp core download --path=/srv/wordpress/

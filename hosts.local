@@ -1,4 +1,7 @@
 ---
 
-[wordpress-server]
+[wordpress]
 192.168.33.10 ansible_ssh_user=vagrant
+
+[local:children]
+wordpress
