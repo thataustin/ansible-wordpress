@@ -1,0 +1,6 @@
+---
+
+- name: Install wordpress, nginx, postgres
+  hosts: wordpress-server
+  roles:
+    - wordpress
