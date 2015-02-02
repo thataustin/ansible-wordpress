@@ -1,0 +1,8 @@
+---
+
+- name: Install nginx - forcing download of packages WITHOUT authentication
+  apt: name=nginx state=present force=yes
+
+- name: Copy nginx configuration for wordpress
+  template: src=default.conf dest=/etc/nginx/conf.d/default.conf
+  notify: restart nginx
