@@ -1,6 +1,8 @@
 ansible-wordpress
 =================
 
+[![Join the chat at https://gitter.im/thataustin/ansible-wordpress](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/thataustin/ansible-wordpress?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 A set of ansible scripts the install Wordpress, wp-cli, nginx, postgresql
 
 **Note:** Change the IPs in host.local and run with `ansible-playbook -i hosts.local site.yml`
