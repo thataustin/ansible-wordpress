@@ -1,7 +1,7 @@
 ---
 
 [wordpress]
-192.168.33.10 ansible_ssh_user=vagrant
+192.168.42.100 ansible_ssh_user=vagrant
 
 [local:children]
 wordpress

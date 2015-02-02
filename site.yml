@@ -1,7 +1,7 @@
 ---
 
 - name: Install wordpress, nginx, postgres
-  hosts: wordpress-server
+  hosts: wordpress
   sudo: yes
   roles:
     - common
